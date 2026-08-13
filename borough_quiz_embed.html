@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>~*~ Which Basa Borough Is For You?! ~*~</title>
+<style>
+  :root{
+    --jiro:#95d875;
+    --keu:#0099ff;
+    --chekchek:#ff0000;
+    --gazi:#ffdf28;
+    --central:#a690ff;
+    --win-gray:#c0c0c0;
+    --win-blue-dark:#000080;
+    --win-blue-light:#1084d0;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:transparent;
+    color:#000;
+    font-family:Verdana, Geneva, sans-serif;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:20px;
+  }
+
+  /* ============ the "window" ============ */
+  .quiz{
+    width:100%;
+    max-width:640px;
+  }
+
+  .win{
+    background:var(--win-gray);
+    border:3px solid #fff;
+    border-right-color:#404040;
+    border-bottom-color:#404040;
+    box-shadow: 4px 4px 0 #000;
+    padding:3px;
+  }
+
+  .titlebar{
+    background:linear-gradient(90deg, var(--win-blue-dark), var(--win-blue-light));
+    color:#fff;
+    font-family:'Comic Sans MS', cursive;
+    font-weight:bold;
+    font-size:15px;
+    padding:5px 8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    letter-spacing:0.5px;
+  }
+  .titlebar-buttons{ display:flex; gap:4px; }
+  .win-btn{
+    width:18px; height:18px;
+    background:var(--win-gray);
+    border:2px outset #fff;
+    font-size:10px;
+    font-weight:bold;
+    color:#000;
+    display:flex; align-items:center; justify-content:center;
+    line-height:1;
+    font-family:Verdana, sans-serif;
+  }
+
+  .win-body{
+    background:#fff;
+    border:2px inset #808080;
+    margin:3px;
+    padding:24px 22px;
+  }
+
+  h1,h2,h3{
+    font-family:'Comic Sans MS', cursive;
+    margin:0 0 10px;
+  }
+
+  .rainbow-rule{
+    height:5px;
+    margin:14px 0;
+    background:linear-gradient(90deg,#ff0000,#ff00cc, #6633ff,#33cc33,#0099ff,#ff9900,#ffff00);
+    border:1px solid #000;
+  }
+
+  /* ============ intro ============ */
+  .intro{ text-align:center; }
+  .intro .marks{
+    display:flex; justify-content:center; gap:10px; margin-bottom:18px;
+  }
+  .mark{
+    width:30px; height:30px;
+    border:2px outset #fff;
+  }
+  .intro h1{
+    font-size:clamp(24px,5vw,32px);
+    color:#cc0099;
+    text-shadow: 2px 2px 0 #ffff00, 4px 4px 0 #000;
+    -webkit-text-stroke: 1px #000;
+  }
+  .blink{
+    animation: blinker 1s step-start infinite;
+    color:#ff0000;
+    font-weight:bold;
+    font-family:'Comic Sans MS', cursive;
+    font-size:14px;
+  }
+  @keyframes blinker{ 50% { opacity:0; } }
+
+  .intro p{ font-size:14px; line-height:1.6; margin:14px 0 20px; }
+
+  button{
+    font-family:Verdana, sans-serif;
+    cursor:pointer;
+  }
+
+  .btn-3d{
+    background:var(--win-gray);
+    border:3px outset #fff;
+    color:#000;
+    font-weight:bold;
+    font-size:14px;
+    padding:10px 24px;
+  }
+  .btn-3d:active{
+    border-style:inset;
+  }
+
+  /* ============ question ============ */
+  .progress-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    font-family:'Courier New', monospace;
+    font-size:12px;
+  }
+  .progress-track{
+    flex:1;
+    height:16px;
+    background:#fff;
+    border:2px inset #808080;
+    overflow:hidden;
+    display:flex;
+  }
+  .progress-fill{
+  height:100%;
+  background-color:#00cc00;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #00cc00 0px,
+    #00cc00 10px,
+    #009900 10px,
+    #009900 12px,
+    transparent 12px,
+    transparent 16px
+  );
+  transition:width .3s ease;
+  }
+
+  .question-box{
+    border:2px dashed #cc33ff;
+    background:#fffde7;
+    padding:16px;
+    margin-bottom:20px;
+  }
+  .question-text{
+    font-size:17px;
+    line-height:1.4;
+    font-weight:bold;
+    min-height:50px;
+  }
+
+  .scale{
+    display:flex;
+    justify-content:space-between;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+
+  .scale-option{
+    flex:1;
+    min-width:60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    background:var(--win-gray);
+    border:3px outset #fff;
+    padding:8px 4px;
+  }
+  .scale-option:hover{ background:#d8d8f8; }
+  .scale-option.selected{
+    border-style:inset;
+    background:#ffff99;
+  }
+
+  .scale-option.selected.option_1 {
+    border-style: inset;
+    background: #d04242;
+  }
+  .scale-option.selected.option_2 {
+    border-style: inset;
+    background: #9465d5;
+  }
+  .scale-option.selected.option_3 {
+    border-style: inset;
+    background: #66d166;
+  }
+  .scale-option.selected.option_4 {
+    border-style: inset;
+    background: #5a89bb;
+  }
+  .scale-option.selected.option_5 {
+    border-style: inset;
+    background: #ffff99;
+  }
+
+  .scale-smilie{
+    width:32px;
+    height:32px;
+    object-fit:contain;
+    image-rendering:pixelated;
+    transition:filter .1s ease, transform .1s ease;
+  }
+  .scale-option:hover .scale-smilie{
+    filter:none;
+  }
+  .scale-option.selected .scale-smilie{
+    filter:none;
+    transform:scale(1.15);
+  }
+
+  .scale-caption{
+    font-size:10px;
+    text-align:center;
+    line-height:1.2;
+    font-weight:bold;
+  }
+
+  .nav-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:22px;
+  }
+
+  .btn-flat{
+    background:none;
+    border:none;
+    color:#0000ee;
+    text-decoration:underline;
+    font-size:13px;
+    font-weight:bold;
+  }
+  .btn-flat:disabled{ color:#999; text-decoration:none; cursor:default; }
+
+  /* ============ results ============ */
+  .results{ display:none; }
+  .results .win-body{ text-align:center; }
+  .winner-mark{
+    width:56px; height:56px;
+    margin:0 auto 14px;
+    border:3px outset #fff;
+  }
+  .results h2{
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color:#666; font-family:Verdana, sans-serif; font-weight:bold; margin-bottom:6px;
+  }
+  .results h1{
+    font-size:clamp(24px,5vw,32px);
+    color:#cc0099;
+    text-shadow:2px 2px 0 #ffff00, 4px 4px 0 #000;
+    -webkit-text-stroke: 1px #000;
+    margin-bottom:10px;
+  }
+
+  /* blurb now holds multiple <p> lines plus a result image */
+  .blurb{
+    font-size:13px; line-height:1.6; margin:0 auto 24px; max-width:420px; text-align:left;
+  }
+  .blurb p{
+    margin:0 0 14px;
+    text-align: center;
+  }
+  .blurb p:last-child{
+    margin-bottom:0;
+  }
+  .blurb strong{
+    color:#000;
+    background:#ffff66;
+    padding:0 3px;
+    border:1px solid #000;
+  }
+
+  .winner-image{
+    display:block;
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    margin:6px auto 18px;
+    border:3px outset #fff;
+    background:#f4f4f4;
+    image-rendering:pixelated;
+  }
+
+  .bars{ text-align:left; margin-bottom:24px; }
+  .bar-row{
+    margin-bottom:12px;
+    border:1px solid #999;
+    background:#f4f4f4;
+    padding:6px 8px;
+  }
+  .bar-label-row{
+    display:flex; justify-content:space-between;
+    font-size:12px; margin-bottom:5px; font-weight:bold;
+  }
+  .bar-pct{ font-family:'Courier New', monospace; }
+  .bar-track{
+    height:12px; background:#fff; border:1px inset #808080; overflow:hidden;
+  }
+  .bar-fill{
+    height:100%; width:0%;
+    transition:width .8s cubic-bezier(.2,.8,.2,1);
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.35) 0, rgba(255,255,255,.35) 4px, transparent 4px, transparent 8px);
+  }
+
+  .stars{ letter-spacing:6px; color:#ffcc00; text-shadow:1px 1px 0 #000; font-size:16px; margin-bottom:16px;}
+
+  @media (max-width:480px){
+    .win-body{ padding:16px 12px; }
+    .scale-caption{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz" id="quiz">
+
+  <!-- INTRO -->
+  <div id="screen-intro">
+    <div class="win">
+      <div class="titlebar">
+        <span>Basa City Borough Quiz</span>
+        <div class="titlebar-buttons">
+          <div class="win-btn">_</div>
+          <div class="win-btn">□</div>
+          <div class="win-btn">X</div>
+        </div>
+      </div>
+      <div class="win-body intro">
+        <div class="marks">
+          <div class="mark" style="background:var(--jiro)"></div>
+          <div class="mark" style="background:var(--keu)"></div>
+          <div class="mark" style="background:var(--chekchek)"></div>
+          <div class="mark" style="background:var(--gazi)"></div>
+          <div class="mark" style="background:var(--central)"></div>
+        </div>
+        <h1>Which Basa City Borough Are You From?</h1>
+        <div class="blink">☆ CLICK BELOW TO BEGIN ☆</div>
+        <p>Curious about which borough of Basa City is the best for you? Take this personality quiz and find out!</p>
+        <button class="btn-3d" onclick="startQuiz()">▶ START QUIZ</button>
+        <div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTION -->
+  <div id="screen-question" style="display:none;">
+    <div class="win">
+      <div class="titlebar">
+        <span>Basa City Borough Quiz</span>
+        <div class="titlebar-buttons">
+          <div class="win-btn">_</div>
+          <div class="win-btn">□</div>
+          <div class="win-btn">X</div>
+        </div>
+      </div>
+      <div class="win-body">
+        <div class="progress-row">
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          <div id="progress-label">1 / 10</div>
+        </div>
+        <div class="question-box">
+          <div class="question-text" id="question-text"></div>
+        </div>
+        <div class="scale" id="scale"></div>
+        <div class="rainbow-rule"></div>
+        <div class="nav-row">
+          <button class="btn-flat" id="btn-back" onclick="goBack()">&laquo; back</button>
+          <button class="btn-flat" id="btn-next" onclick="goNext()" disabled>next &raquo;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="screen-results">
+    <div class="win">
+      <div class="titlebar">
+        <span>RESULTS!</span>
+        <div class="titlebar-buttons">
+          <div class="win-btn">_</div>
+          <div class="win-btn">□</div>
+          <div class="win-btn">X</div>
+        </div>
+      </div>
+      <div class="win-body">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <div class="winner-mark" id="winner-mark"></div>
+        <h2>Your Result Is...</h2>
+        <h1 id="winner-name"></h1>
+        <div class="blurb" id="winner-blurb"></div>
+
+        <div class="bars" id="bars"></div>
+
+        <button class="btn-3d" onclick="restartQuiz()">↻ TAKE IT AGAIN</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================
+   RESULT DEFINITIONS
+   - blurb: use \n to start a new paragraph. Words in ALL CAPS
+     (2+ letters) are auto-bolded, e.g. WATER, DRAGON.
+   - image: shown once, right after the first line/paragraph.
+   ========================================================= */
+const RESULTS = {
+  jiro:      {
+    name: "Jiro Basa",
+    color: "var(--jiro)",
+    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/tiger.gif",
+    blurb: "You are from Jiro Basa in Basa City! Jiro Basa's element is WOOD and is guarded by the TIGER spirit beast.\nEmpathy, sentimentality, and your connections with people are important to you. Your willingness to hear others out and absorb information is what naturally inclines friends to trust you. You may not always be the best at thinking on your feet, but you're a pillar of dependability and can help grow any community into a thriving one."
+  },
+  keu:       {
+    name: "Ke'u Basa",
+    color: "var(--keu)",
+    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/dragon.gif",
+    blurb: "You are from Ke'u Basa in Basa City! Ke'u Basa's element is WATER and is guarded by the DRAGON spirit beast.\nYou are a free-spirited adventurer, always seeking new experiences, effortlessly adapting to change, and embracing the unexpected. There may be times where you have trouble staying in the moment, looking ahead to what's next, but your natural instinct for exploration will always take you where you need to go."
+  },
+  chekchek:  {
+    name: "Chek Chek Basa",
+    color: "var(--chekchek)",
+    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/phoenix.gif",
+    blurb: "You are from Chek Chek Basa in Basa City! Chek Chek Basa's element is FIRE and is guarded by the PHOENIX spirit beast.\nYou embody the spirit of a bold innovator, diving into the unexplored led only by your passion and your vision for the world. You can sometimes be abrasive, but you'll do whatever it takes to shape the future with your own groundbreaking ideas. You're ready and willing to push the boundaries of anything you set your sights on."
+  },
+  gazi:      {
+    name: "Ga Zi Basa",
+    color: "var(--gazi)",
+    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/water_buffalo.gif",
+    blurb: "You are from Ga Zi Basa in Basa City! Ga Zi Basa's element is EARTH and is guarded by the OX spirit beast.\nTradition, unwavering beliefs, and the ability to learn from what came before you are all qualities you hold. You honor timeless values and always stand up for what you believe in. Your stubbornness can certainly cause some friction, but your methodical and structured approach to life will always keep you on track."
+  },
+  central:   {
+    name: "Central Basa",
+    color: "var(--central)",
+    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/foo_dog.gif",
+    blurb: "You are from Central Basa in Basa City! Central Basa's element is METAL and is guarded by the LIONDOG spirit beast.\nYou are ambitious and determined, driven by your career aspirations and a thirst for vibrant surroundings. You thrive in environments where there is constant activity and opportunities for growth. There are certainly times where you isolate yourself and become too absorbed in your work, but your goals are strong. You embrace new experiences and enjoy engaging with people of diverse views and beliefs."
+  },
+};
+
+/* =========================================================
+   QUESTIONS — scoring object keyed 1-5, values are partial
+   {resultKey: points} maps. Omit results that score 0.
+   ========================================================= */
+const QUESTIONS = [
+  {
+    text: "Test!",
+    scoring: {
+      1: { jiro: 3 },
+      2: { keu: 3 },
+      3: { gazi: 3 },
+      4: { chekchek: 3 },
+      5: { central: 3 }
+    }
+  },
+  {
+    text: "Test 2!",
+    scoring: {
+      1: { jiro: 3 },
+      2: { keu: 3 },
+      3: { gazi: 3 },
+      4: { chekchek: 3 },
+      5: { central: 3 }
+    }
+  }
+];
+
+const SCALE_LABELS = {
+  1: "Strongly Disagree",
+  2: "Disagree",
+  3: "Neutral",
+  4: "Agree",
+  5: "Strongly Agree"
+};
+
+/* =========================================================
+   SMILIE IMAGES
+   ========================================================= */
+const SMILIE_URLS = {
+  1: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/rage.gif",
+  2: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/frowning.gif",
+  3: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/neutral.gif",
+  4: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/smile.gif",
+  5: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/smiley.gif"
+};
+
+/* =========================================================
+   ENGINE
+   ========================================================= */
+let current = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+
+function startQuiz(){
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-question').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  document.getElementById('question-text').textContent = q.text;
+  document.getElementById('progress-label').textContent = `${current + 1} / ${QUESTIONS.length}`;
+  document.getElementById('progress-fill').style.width = `${((current) / QUESTIONS.length) * 100}%`;
+
+  const scale = document.getElementById('scale');
+  scale.innerHTML = '';
+  for(let i = 1; i <= 5; i++){
+    const opt = document.createElement('button');
+    opt.className = 'scale-option' + (answers[current] === i ? ' selected' : '') + ' option_' + i.toString();
+    opt.innerHTML = `<img class="scale-smilie" src="${SMILIE_URLS[i]}" alt="${SCALE_LABELS[i]}"><div class="scale-caption">${SCALE_LABELS[i]}</div>`;
+    opt.onclick = () => selectAnswer(i);
+    scale.appendChild(opt);
+  }
+
+  document.getElementById('btn-back').disabled = current === 0;
+  document.getElementById('btn-next').disabled = answers[current] === null;
+  document.getElementById('btn-next').textContent = current === QUESTIONS.length - 1 ? 'see results »' : 'next »';
+}
+
+function selectAnswer(value){
+  answers[current] = value;
+  renderQuestion();
+}
+
+function goNext(){
+  if(answers[current] === null) return;
+  if(current === QUESTIONS.length - 1){
+    showResults();
+  } else {
+    current++;
+    renderQuestion();
+  }
+}
+
+function goBack(){
+  if(current === 0) return;
+  current--;
+  renderQuestion();
+}
+
+function tallyScores(){
+  const totals = { jiro:0, keu:0, chekchek:0, gazi:0, central:0 };
+  QUESTIONS.forEach((q, i) => {
+    const choice = answers[i];
+    if(choice === null) return;
+    const points = q.scoring[choice] || {};
+    for(const key in points){
+      totals[key] += points[key];
+    }
+  });
+  return totals;
+}
+
+// Escapes any HTML special chars in raw text before we inject our own <strong> tags.
+function escapeHtml(str){
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+// Wraps runs of 2+ capital letters (optionally with an apostrophe, e.g. GA'ZI) in <strong>.
+function boldCaps(line){
+  return escapeHtml(line).replace(/\b[A-Z]['A-Z]{1,}\b/g, (match) => `<strong>${match}</strong>`);
+}
+
+// Builds the results blurb HTML: first line, then the image, then remaining lines.
+function renderBlurb(result){
+  const lines = result.blurb.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  let html = '';
+
+  if(lines.length > 0){
+    html += `<p>${boldCaps(lines[0])}</p>`;
+  }
+  if(result.image){
+    html += `<img class="winner-image" src="${result.image}" alt="${result.name}">`;
+  }
+  for(let i = 1; i < lines.length; i++){
+    html += `<p>${boldCaps(lines[i])}</p>`;
+  }
+
+  document.getElementById('winner-blurb').innerHTML = html;
+}
+
+function showResults(){
+  const totals = tallyScores();
+  const grandTotal = Object.values(totals).reduce((a,b) => a+b, 0) || 1;
+
+  const winnerKey = Object.keys(totals).reduce((a,b) => totals[a] >= totals[b] ? a : b);
+  const winner = RESULTS[winnerKey];
+
+  document.getElementById('screen-question').style.display = 'none';
+  document.getElementById('screen-results').style.display = 'block';
+
+  document.getElementById('winner-mark').style.background = winner.color;
+  document.getElementById('winner-name').textContent = winner.name;
+  renderBlurb(winner);
+
+  const barsEl = document.getElementById('bars');
+  barsEl.innerHTML = '';
+
+  const ordered = Object.keys(totals).sort((a,b) => totals[b] - totals[a]);
+  ordered.forEach(key => {
+    const pct = Math.round((totals[key] / grandTotal) * 100);
+    const r = RESULTS[key];
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.innerHTML = `
+      <div class="bar-label-row">
+        <span class="bar-name">${r.name}</span>
+        <span class="bar-pct">${pct}%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="background:${r.color}"></div>
+      </div>
+    `;
+    barsEl.appendChild(row);
+    requestAnimationFrame(() => {
+      row.querySelector('.bar-fill').style.width = pct + '%';
+    });
+  });
+}
+
+function restartQuiz(){
+  current = 0;
+  answers.fill(null);
+  document.getElementById('screen-results').style.display = 'none';
+  document.getElementById('screen-intro').style.display = 'block';
+}
+
+/* =========================================================
+   IFRAME AUTO-HEIGHT
+   Tells the parent page how tall the widget currently is, so
+   the host site can resize the iframe to fit (no scrollbar, no
+   cut-off content). Fires on load and whenever the quiz changes
+   screens or size. Pairs with the listener in the embed snippet.
+   ========================================================= */
+function reportHeight(){
+  if(window.parent !== window){
+    const height = document.getElementById('quiz').offsetHeight + 40; // + body padding
+    window.parent.postMessage({ type: 'basa-quiz-height', height }, '*');
+  }
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+new MutationObserver(reportHeight).observe(document.getElementById('quiz'), { childList:true, subtree:true, attributes:true });
+</script>
+
+</body>
+</html>
