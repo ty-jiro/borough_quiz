@@ -443,31 +443,31 @@ const RESULTS = {
   jiro:      {
     name: "Jiro Basa",
     color: "var(--jiro)",
-    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/tiger.gif",
+    image: "images/result_icons/tiger.gif",
     blurb: "You are from Jiro Basa in Basa City! Jiro Basa's element is WOOD and is guarded by the TIGER spirit beast.\nEmpathy, sentimentality, and your connections with people are important to you. Your willingness to hear others out and absorb information is what naturally inclines friends to trust you. You may not always be the best at thinking on your feet, but you're a pillar of dependability and can help grow any community into a thriving one."
   },
   keu:       {
     name: "Ke'u Basa",
     color: "var(--keu)",
-    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/dragon.gif",
+    image: "images/result_icons/dragon.gif",
     blurb: "You are from Ke'u Basa in Basa City! Ke'u Basa's element is WATER and is guarded by the DRAGON spirit beast.\nYou are a free-spirited adventurer, always seeking new experiences, effortlessly adapting to change, and embracing the unexpected. There may be times where you have trouble staying in the moment, looking ahead to what's next, but your natural instinct for exploration will always take you where you need to go."
   },
   chekchek:  {
     name: "Chek Chek Basa",
     color: "var(--chekchek)",
-    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/phoenix.gif",
+    image: "images/result_icons/phoenix.gif",
     blurb: "You are from Chek Chek Basa in Basa City! Chek Chek Basa's element is FIRE and is guarded by the PHOENIX spirit beast.\nYou embody the spirit of a bold innovator, diving into the unexplored led only by your passion and your vision for the world. You can sometimes be abrasive, but you'll do whatever it takes to shape the future with your own groundbreaking ideas. You're ready and willing to push the boundaries of anything you set your sights on."
   },
   gazi:      {
     name: "Ga Zi Basa",
     color: "var(--gazi)",
-    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/water_buffalo.gif",
+    image: "images/result_icons/water_buffalo.gif",
     blurb: "You are from Ga Zi Basa in Basa City! Ga Zi Basa's element is EARTH and is guarded by the OX spirit beast.\nTradition, unwavering beliefs, and the ability to learn from what came before you are all qualities you hold. You honor timeless values and always stand up for what you believe in. Your stubbornness can certainly cause some friction, but your methodical and structured approach to life will always keep you on track."
   },
   central:   {
     name: "Central Basa",
     color: "var(--central)",
-    image: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/result_icons/foo_dog.gif",
+    image: "images/result_icons/foo_dog.gif",
     blurb: "You are from Central Basa in Basa City! Central Basa's element is METAL and is guarded by the LIONDOG spirit beast.\nYou are ambitious and determined, driven by your career aspirations and a thirst for vibrant surroundings. You thrive in environments where there is constant activity and opportunities for growth. There are certainly times where you isolate yourself and become too absorbed in your work, but your goals are strong. You embrace new experiences and enjoy engaging with people of diverse views and beliefs."
   },
 };
@@ -478,25 +478,315 @@ const RESULTS = {
    ========================================================= */
 const QUESTIONS = [
   {
-    text: "Test!",
+    text: "You find it easy to read people's emotions.",
     scoring: {
-      1: { jiro: 3 },
-      2: { keu: 3 },
-      3: { gazi: 3 },
-      4: { chekchek: 3 },
-      5: { central: 3 }
+      1: { jiro: 0, keu: 0, gazi: 2, chekchek: 1, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 1, keu: 0, gazi: 1, chekchek: 2, central: 1 },
+      4: { jiro: 2, keu: 1, gazi: 0, chekchek: 1, central: 0 },
+      5: { jiro: 4, keu: 1, gazi: 0, chekchek: 0, central: 1 }
     }
   },
   {
-    text: "Test 2!",
+    text: "You enjoy having conversations about theoretical and philosophical topics.",
     scoring: {
-      1: { jiro: 3 },
-      2: { keu: 3 },
-      3: { gazi: 3 },
-      4: { chekchek: 3 },
-      5: { central: 3 }
+      1: { jiro: 0, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 1, chekchek: 3, central: 0 },
+      3: { jiro: 0, keu: 0, gazi: 1, chekchek: 2, central: 1 },
+      4: { jiro: 2, keu: 2, gazi: 0, chekchek: 0, central: 2 },
+      5: { jiro: 3, keu: 3, gazi: 0, chekchek: 0, central: 1 }
     }
-  }
+  },
+  {
+    text: "You're often the person people go to for advice.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 0, chekchek: 1, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 0, chekchek: 3, central: 1 },
+      3: { jiro: 0, keu: 1, gazi: 0, chekchek: 1, central: 1 },
+      4: { jiro: 1, keu: 0, gazi: 1, chekchek: 0, central: 1 },
+      5: { jiro: 2, keu: 0, gazi: 0, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You prefer to dive head first into situations.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 3, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 2, gazi: 1, chekchek: 1, central: 1 },
+      4: { jiro: 0, keu: 3, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 0, keu: 1, gazi: 0, chekchek: 3, central: 1 }
+    }
+  },
+  {
+    text: "You get more joy from helping others than working on your own accomplishments.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 0, chekchek: 3, central: 3 },
+      2: { jiro: 0, keu: 1, gazi: 0, chekchek: 2, central: 2 },
+      3: { jiro: 0, keu: 2, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 2, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      5: { jiro: 3, keu: 0, gazi: 0, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You don't mind sticking out from the crowd, even if people stare.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 2, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 3, keu: 2, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 0, keu: 1, gazi: 0, chekchek: 2, central: 1 },
+      5: { jiro: 0, keu: 0, gazi: 0, chekchek: 3, central: 2 }
+    }
+  },
+  {
+    text: "You are very sentimental.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 0, chekchek: 1, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 0, chekchek: 2, central: 1 },
+      3: { jiro: 0, keu: 2, gazi: 0, chekchek: 0, central: 2 },
+      4: { jiro: 2, keu: 1, gazi: 1, chekchek: 0, central: 0 },
+      5: { jiro: 3, keu: 1, gazi: 2, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "Your work style consists of bursts of passion rather than organized efforts.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 0, keu: 2, gazi: 0, chekchek: 0, central: 1 },
+      4: { jiro: 2, keu: 1, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 3, keu: 0, gazi: 0, chekchek: 0, central: 3 }
+    }
+  },
+  {
+    text: "It's hard for you to hide how you feel.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 2, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 0, gazi: 1, chekchek: 0, central: 1 },
+      4: { jiro: 1, keu: 1, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 0, keu: 2, gazi: 0, chekchek: 3, central: 0 }
+    }
+  },
+  {
+    text: "You want to make something that has never existed before.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 1, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 2, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 3, keu: 0, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 0, chekchek: 4, central: 3 }
+    }
+  },
+  {
+    text: "You tend to follow your heart over your head.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 2 },
+      3: { jiro: 3, keu: 0, gazi: 2, chekchek: 0, central: 3 },
+      4: { jiro: 2, keu: 0, gazi: 1, chekchek: 2, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 0, chekchek: 3, central: 0 }
+    }
+  },
+  {
+    text: "In order to succeed, you need a plan.",
+    scoring: {
+      1: { jiro: 2, keu: 3, gazi: 0, chekchek: 2, central: 0 },
+      2: { jiro: 3, keu: 2, gazi: 0, chekchek: 1, central: 0 },
+      3: { jiro: 0, keu: 0, gazi: 1, chekchek: 1, central: 1 },
+      4: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You do well under pressure.",
+    scoring: {
+      1: { jiro: 1, keu: 2, gazi: 0, chekchek: 0, central: 0 },
+      2: { jiro: 3, keu: 0, gazi: 0, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 1, gazi: 1, chekchek: 1, central: 0 },
+      4: { jiro: 0, keu: 1, gazi: 2, chekchek: 2, central: 3 },
+      5: { jiro: 0, keu: 0, gazi: 3, chekchek: 2, central: 3 }
+    }
+  },
+  {
+    text: "If you believe in something, it's hard to change your mind.",
+    scoring: {
+      1: { jiro: 3, keu: 3, gazi: 0, chekchek: 0, central: 0 },
+      2: { jiro: 2, keu: 2, gazi: 0, chekchek: 1, central: 0 },
+      3: { jiro: 0, keu: 1, gazi: 1, chekchek: 1, central: 1 },
+      4: { jiro: 0, keu: 0, gazi: 2, chekchek: 2, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You try things even if you think they won't work.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 3, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 2, central: 0 },
+      3: { jiro: 0, keu: 0, gazi: 1, chekchek: 1, central: 1 },
+      4: { jiro: 2, keu: 2, gazi: 0, chekchek: 0, central: 1 },
+      5: { jiro: 3, keu: 3, gazi: 0, chekchek: 0, central: 2 }
+    }
+  },
+  {
+    text: "You get antsy if you don't have much space to move around.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 0, chekchek: 0, central: 3 },
+      2: { jiro: 0, keu: 0, gazi: 0, chekchek: 0, central: 2 },
+      3: { jiro: 1, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 1, keu: 1, gazi: 2, chekchek: 1, central: 0 },
+      5: { jiro: 0, keu: 2, gazi: 3, chekchek: 2, central: 0 }
+    }
+  },
+  {
+    text: "You are interested in so many things that you find it difficult to choose what to try next.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      3: { jiro: 0, keu: 2, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 2, keu: 1, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 3, keu: 0, gazi: 0, chekchek: 3, central: 3 }
+    }
+  },
+  {
+    text: "History is the best teacher.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 0, chekchek: 2, central: 0 },
+      2: { jiro: 0, keu: 1, gazi: 0, chekchek: 1, central: 0 },
+      3: { jiro: 0, keu: 2, gazi: 1, chekchek: 1, central: 0 },
+      4: { jiro: 2, keu: 0, gazi: 2, chekchek: 0, central: 2 },
+      5: { jiro: 1, keu: 0, gazi: 4, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You make friends wherever you go.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      3: { jiro: 0, keu: 2, gazi: 0, chekchek: 1, central: 0 },
+      4: { jiro: 1, keu: 3, gazi: 0, chekchek: 1, central: 2 },
+      5: { jiro: 2, keu: 2, gazi: 0, chekchek: 0, central: 3 }
+    }
+  },
+  {
+    text: "You're willing to change your mind when presented with new information.",
+    scoring: {
+      1: { jiro: 0, keu: 3, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 2, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 0, keu: 0, gazi: 1, chekchek: 2, central: 1 },
+      4: { jiro: 2, keu: 2, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 3, keu: 3, gazi: 0, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You don't mind when plans change last minute.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 3, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 2, central: 2 },
+      3: { jiro: 2, keu: 0, gazi: 1, chekchek: 2, central: 1 },
+      4: { jiro: 1, keu: 2, gazi: 0, chekchek: 1, central: 0 },
+      5: { jiro: 0, keu: 4, gazi: 0, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You keep things organized.",
+    scoring: {
+      1: { jiro: 0, keu: 2, gazi: 0, chekchek: 0, central: 0 },
+      2: { jiro: 1, keu: 2, gazi: 0, chekchek: 0, central: 0 },
+      3: { jiro: 1, keu: 3, gazi: 1, chekchek: 0, central: 3 },
+      4: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "There aren't many things that stress you out.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 1, central: 1 },
+      2: { jiro: 0, keu: 0, gazi: 1, chekchek: 2, central: 2 },
+      3: { jiro: 1, keu: 0, gazi: 1, chekchek: 1, central: 1 },
+      4: { jiro: 2, keu: 2, gazi: 0, chekchek: 0, central: 0 },
+      5: { jiro: 0, keu: 3, gazi: 0, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You listen more than you speak.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 0, chekchek: 3, central: 3 },
+      2: { jiro: 1, keu: 0, gazi: 0, chekchek: 2, central: 2 },
+      3: { jiro: 0, keu: 2, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 2, keu: 3, gazi: 1, chekchek: 0, central: 0 },
+      5: { jiro: 2, keu: 0, gazi: 3, chekchek: 0, central: 0 }
+    }
+  },
+  {
+    text: "You get bored if you don't keep doing new things.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 0, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 3, keu: 2, gazi: 0, chekchek: 2, central: 2 },
+      5: { jiro: 0, keu: 3, gazi: 0, chekchek: 3, central: 3 }
+    }
+  },
+  {
+    text: "Your career is always the top priority.",
+    scoring: {
+      1: { jiro: 0, keu: 2, gazi: 0, chekchek: 0, central: 0 },
+      2: { jiro: 1, keu: 2, gazi: 0, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 1, gazi: 2, chekchek: 2, central: 0 },
+      4: { jiro: 0, keu: 0, gazi: 1, chekchek: 3, central: 3 },
+      5: { jiro: 0, keu: 0, gazi: 0, chekchek: 0, central: 4 }
+    }
+  },
+  {
+    text: "You're good at improvising when something unexpected happens.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 1, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 2, keu: 0, gazi: 1, chekchek: 1, central: 0 },
+      4: { jiro: 0, keu: 2, gazi: 0, chekchek: 2, central: 1 },
+      5: { jiro: 0, keu: 3, gazi: 0, chekchek: 1, central: 2 }
+    }
+  },
+  {
+    text: "You'll try nearly anything, at least once.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 0, keu: 2, gazi: 0, chekchek: 1, central: 0 },
+      4: { jiro: 1, keu: 3, gazi: 0, chekchek: 1, central: 2 },
+      5: { jiro: 1, keu: 2, gazi: 0, chekchek: 0, central: 3 }
+    }
+  },
+  {
+    text: "You need to live in a place where there's always something going on.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 2, chekchek: 0, central: 0 },
+      2: { jiro: 1, keu: 2, gazi: 1, chekchek: 0, central: 0 },
+      3: { jiro: 1, keu: 1, gazi: 1, chekchek: 2, central: 0 },
+      4: { jiro: 0, keu: 0, gazi: 0, chekchek: 3, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 0, chekchek: 0, central: 3 }
+    }
+  },
+  {
+    text: "It's not important to you to make a good first impression.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 0, central: 0 },
+      2: { jiro: 2, keu: 2, gazi: 2, chekchek: 0, central: 0 },
+      3: { jiro: 1, keu: 1, gazi: 1, chekchek: 0, central: 0 },
+      4: { jiro: 0, keu: 0, gazi: 0, chekchek: 1, central: 2 },
+      5: { jiro: 0, keu: 0, gazi: 0, chekchek: 1, central: 3 }
+    }
+  },
+  {
+    text: "You like talking to people even when they have completely different views and beliefs than you.",
+    scoring: {
+      1: { jiro: 0, keu: 0, gazi: 3, chekchek: 1, central: 0 },
+      2: { jiro: 0, keu: 0, gazi: 2, chekchek: 1, central: 0 },
+      3: { jiro: 0, keu: 1, gazi: 0, chekchek: 0, central: 0 },
+      4: { jiro: 1, keu: 2, gazi: 0, chekchek: 0, central: 2 },
+      5: { jiro: 2, keu: 1, gazi: 0, chekchek: 0, central: 3 }
+    }
+  },
 ];
 
 const SCALE_LABELS = {
@@ -511,11 +801,11 @@ const SCALE_LABELS = {
    SMILIE IMAGES
    ========================================================= */
 const SMILIE_URLS = {
-  1: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/rage.gif",
-  2: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/frowning.gif",
-  3: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/neutral.gif",
-  4: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/smile.gif",
-  5: "https://tsremvktplujuslbqwsb.supabase.co/storage/v1/object/public/misc/personality_quiz/scale_icons/smiley.gif"
+  1: "images/scale_icons/rage.gif",
+  2: "images/scale_icons/frowning.gif",
+  3: "images/scale_icons/neutral.gif",
+  4: "images/scale_icons/smile.gif",
+  5: "images/scale_icons/smiley.gif"
 };
 
 /* =========================================================
@@ -524,7 +814,16 @@ const SMILIE_URLS = {
 let current = 0;
 const answers = new Array(QUESTIONS.length).fill(null);
 
+function shuffleArray(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function startQuiz(){
+  shuffleArray(QUESTIONS);
   document.getElementById('screen-intro').style.display = 'none';
   document.getElementById('screen-question').style.display = 'block';
   renderQuestion();
